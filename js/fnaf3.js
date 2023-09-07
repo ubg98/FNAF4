@@ -334,7 +334,6 @@ var P;
         }
         audio.loadSoundbankSB2 = loadSoundbankSB2;
         function loadSoundbankBuffer(name) {
-            console.log("--fx--loadSoundbankBuffer--", name);
             return P.io.getAssetManager().loadSoundbankFile(SB2_SOUNDBANK_FILES[name])
                 .then((buffer) => P.audio.decodeAudio(buffer))
                 .then((sound) => soundbank[name] = sound);
@@ -2143,19 +2142,15 @@ var P;
                 this.soundbankSource = 'soundbank/';
             }
             loadSoundbankFile(src) {
-                console.log("--fx--FetchingAssetManager--loadSoundbankFile--", src);
                 return this.loadArrayBuffer(this.soundbankSource + src);
             }
             loadFont(src) {
-                console.log("--fx--FetchingAssetManager--loadFont--", src);
                 return this.loadBlob(src);
             }
             loadArrayBuffer(src) {
-                console.log("--fx--FetchingAssetManager--loadArrayBuffer--", src);
                 return new Request(io.config.localPath + src).load('arraybuffer');
             }
             loadBlob(src) {
-                console.log("--fx--FetchingAssetManager--loadBlob--", src);
                 return new Request(io.config.localPath + src).load('blob');
             }
         }
@@ -10997,20 +10992,15 @@ var P;
     }
 
     loadSoundbankFile(src) {
-        console.log("--fx--loadSoundbankFile--", src);
-        return this.fetch('soundbank/' + src).then(function(e) { return e.arrayBuffer(); });
+      return this.fetch('soundbank/' + src).then(function(e) { return e.arrayBuffer(); });
     }
 
     loadFont(src) {
-        console.log("--fx--loadFont--", src);
-        return this.fetch(src).then(function(e) { return e.blob(); });
+      return this.fetch(src).then(function(e) { return e.blob(); });
     }
 
     fetch(u) {
-        console.log("--fx--fetch--", u);
-        // console.log("--fx--fetch--data--", this.data[u]);
-        return fetch(this.data[u]);
-        // return fetch(u);
+      return fetch(this.data[u]);
     }
   });
 
@@ -11018,7 +11008,7 @@ var P;
   var type = 'sb3';
   // Project data...
   // Attribution Notice: No license assumed.
-  var project = octet_stream_data;
+  var project = octetStreamJS;
 
   // Player options...
   var playerOptions = {"fullscreenPadding":0,"fullscreenMode":"window","turbo":false,"autoplayPolicy":"always","username":"","fps":30,"spriteFencing":false,"cloudVariables":"off"};
